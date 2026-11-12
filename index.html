@@ -71,6 +71,8 @@ h2 { font: 800 clamp(30px, 4vw, 44px)/1.05 var(--display); font-stretch: 78%; te
 .app li::before { content: "+ "; font-family: var(--mono); color: var(--amber); }
 .app .thumb { border-radius: 6px; border: 1px solid var(--line); }
 .app .btn { margin-top: auto; align-self: flex-start; }
+.app .src { margin-top: 12px; font-size: 14px; color: var(--muted); }
+.app .src:hover { color: var(--text); }
 .app.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 28px; }
 .app.wide .body { display: grid; gap: 12px; flex: 1; }
 .soon { font: 500 12px/1 var(--mono); color: var(--ink); background: var(--muted); padding: 5px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .06em; }
@@ -164,6 +166,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <img class="thumb" src="img/droptrace-live.webp" width="1200" height="270" alt="DropTrace's Live screen showing This PC, Router, Internet and Website lookups all working.">
           <p>Checks your connection every second and logs each time it drops. It shows whether the problem was your PC, your router, your provider, or website lookups, and builds a report you can send them.</p>
           <a class="btn primary" href="https://apps.microsoft.com/detail/9P0S0B1RCX70">Get it on Microsoft Store</a>
+          <a class="src" href="https://github.com/FlagPoleOG/DropTrace">Source code on GitHub</a>
         </article>
 
         <article class="app feature">
@@ -196,6 +199,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
             <li>Checked folders go to the Recycle Bin</li>
           </ul>
           <a class="btn primary" href="https://apps.microsoft.com/detail/9NG4J9PKM2WC">Get it on Microsoft Store</a>
+          <a class="src" href="https://github.com/FlagPoleOG/FolderTrace">Source code on GitHub</a>
         </article>
 
         <article class="app">
