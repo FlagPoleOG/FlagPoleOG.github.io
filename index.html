@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Shift Software</title>
+<meta name="description" content="Small, native Windows apps built on the night shift. DropTrace logs every internet outage and shows the likely cause, so you have a record for your provider.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Night-shift plant floor: ink-dark sky, sodium-lamp amber accent; real app screenshots carry the proof. */
+  --ink: #0d1117;
+  --panel: #151b24;
+  --line: #263041;
+  --text: #e6e9ef;
+  --muted: #8d97a8;
+  --amber: #f2a93b;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--ink); color: var(--text); font: 400 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+img { max-width: 100%; height: auto; display: block; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+
+header { border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+.mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.mark svg { flex: none; }
+.mark span { font: 800 15px/1 var(--display); font-stretch: 112%; letter-spacing: .14em; text-transform: uppercase; }
+nav { display: flex; gap: 22px; font-size: 15px; }
+nav a { text-decoration: none; color: var(--muted); }
+nav a:hover { color: var(--text); }
+
+.hero { padding-block: 72px 40px; }
+.hero-copy { max-width: 760px; }
+.stamp, .label { font: 500 13px/1 var(--mono); color: var(--amber); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 20px; }
+h1 { font: 900 clamp(40px, 6.4vw, 78px)/0.95 var(--display); font-stretch: 68%; text-transform: uppercase; margin: 0 0 24px; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--amber); }
+.lede { color: var(--muted); max-width: 36em; margin: 0 0 30px; font-size: 18px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 20px; border-radius: 6px; font: 600 15px/1 var(--body); text-decoration: none; border: 1px solid var(--line); background: var(--panel); color: var(--text); transition: border-color .15s, transform .15s; }
+.btn:hover { border-color: var(--muted); transform: translateY(-1px); }
+.btn.primary { background: var(--amber); border-color: var(--amber); color: #1a1205; }
+.btn.primary:hover { border-color: #ffd08a; }
+
+.shot { margin: 48px 0 0; }
+.shot img { border-radius: 10px; border: 1px solid #364257; box-shadow: 0 40px 90px -40px rgba(0,0,0,.9), 0 20px 70px -50px rgba(242,169,59,.45); }
+.shot figcaption { margin-top: 14px; font: 400 13px/1.5 var(--mono); color: var(--muted); }
+
+section { padding-block: 72px; border-top: 1px solid var(--line); }
+h2 { font: 800 clamp(30px, 4vw, 44px)/1.05 var(--display); font-stretch: 78%; text-transform: uppercase; margin: 0 0 40px; text-wrap: balance; }
+.apps { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.app { display: flex; flex-direction: column; gap: 16px; padding: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.app.feature { border-color: rgba(242,169,59,.55); }
+.app-top { display: flex; align-items: center; gap: 14px; }
+.app-top img { width: 48px; height: 48px; border-radius: 11px; }
+.app-top div { flex: 1; }
+.app h3 { font: 800 26px/1.05 var(--display); font-stretch: 85%; margin: 0; }
+.price { font: 500 14px/1.3 var(--mono); color: var(--muted); }
+.app.feature .price { color: var(--amber); }
+.app p { margin: 0; color: var(--muted); }
+.app ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
+.app li::before { content: "+ "; font-family: var(--mono); color: var(--amber); }
+.app .thumb { border-radius: 6px; border: 1px solid var(--line); }
+.app .btn { margin-top: auto; align-self: flex-start; }
+.app.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 28px; }
+.app.wide .body { display: grid; gap: 12px; flex: 1; }
+.soon { font: 500 12px/1 var(--mono); color: var(--ink); background: var(--muted); padding: 5px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .06em; }
+
+.rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.rule h3 { font: 700 20px/1.2 var(--display); font-stretch: 90%; margin: 0 0 8px; }
+.rule p { margin: 0; color: var(--muted); }
+.rule .n { font: 500 13px/1 var(--mono); color: var(--amber); display: block; margin-bottom: 14px; }
+
+.support { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center; }
+.support h2 { margin-bottom: 16px; }
+.support p { color: var(--muted); max-width: 36em; margin: 0; }
+.support .actions { justify-content: flex-end; }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (max-width: 900px) {
+  .apps, .rules, .support { grid-template-columns: 1fr; }
+  .app.wide { flex-direction: column; align-items: stretch; }
+  .support .actions { justify-content: flex-start; }
+}
+@media (max-width: 480px) {
+  body { font-size: 16px; }
+  .wrap { padding-inline: 16px; }
+  .bar { padding-block: 14px; }
+  .mark span { font-size: 13px; letter-spacing: .1em; }
+  .mark svg { width: 24px; height: 24px; }
+  nav { gap: 14px; font-size: 14px; }
+  .hero { padding-block: 36px 24px; }
+  h1 { font-size: 40px; margin-bottom: 18px; }
+  .lede { font-size: 16px; margin-bottom: 24px; }
+  .actions .btn { flex: 1 1 auto; }
+  .shot { margin-top: 32px; }
+  section { padding-block: 52px; }
+  h2 { margin-bottom: 28px; }
+  .app { padding: 20px; }
+  .app .btn { align-self: stretch; }
+  .rules { gap: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top" aria-label="Second Shift Software home">
+      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+        <circle cx="15" cy="15" r="13" fill="none" stroke="#f2a93b" stroke-width="2"/>
+        <path d="M15 6v9l6 4" fill="none" stroke="#e6e9ef" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>Second Shift</span>
+    </a>
+    <nav>
+      <a href="#apps">Apps</a>
+      <a href="#support">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <p class="stamp">Built after clock-out</p>
+      <h1>Small Windows apps that <em>do one job</em> and stay out of your way.</h1>
+      <p class="lede">Native, lightweight tools made by one developer on the night shift. No browser engine running underneath, no account to sign up for, and no subscription.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://apps.microsoft.com/detail/9P0S0B1RCX70">Get DropTrace free</a>
+        <a class="btn" href="#apps">See all apps</a>
+      </div>
+    </div>
+    <figure class="shot">
+      <img src="img/droptrace-history.webp" width="1600" height="900" alt="DropTrace's History screen: a 30-day timeline of outages and a table listing when each one started, how long it lasted, and its likely cause, such as the internet provider, the router, or this PC.">
+      <figcaption>DropTrace's History screen. Every outage gets a start time, a length, and its likely cause.</figcaption>
+    </figure>
+  </div>
+
+  <section id="apps">
+    <div class="wrap">
+      <p class="label">The apps</p>
+      <h2>Find out why your PC is acting up</h2>
+      <div class="apps">
+        <article class="app">
+          <div class="app-top">
+            <img src="img/droptrace-icon.png" width="48" height="48" alt="">
+            <div><h3>DropTrace</h3><span class="price">Free · open source</span></div>
+          </div>
+          <img class="thumb" src="img/droptrace-live.webp" width="1200" height="270" alt="DropTrace's Live screen showing This PC, Router, Internet and Website lookups all working.">
+          <p>Checks your connection every second and logs each time it drops. It shows whether the problem was your PC, your router, your provider, or website lookups, and builds a report you can send them.</p>
+          <a class="btn primary" href="https://apps.microsoft.com/detail/9P0S0B1RCX70">Get it on Microsoft Store</a>
+        </article>
+
+        <article class="app feature">
+          <div class="app-top">
+            <img src="img/droptrace-pro-icon.png" width="48" height="48" alt="">
+            <div><h3>DropTrace Pro</h3><span class="price">$15 one-time</span></div>
+          </div>
+          <img class="thumb" src="img/droptrace-pro-patterns.webp" width="1200" height="320" alt="DropTrace Pro's Pattern Finder, a heatmap showing problems clustering on weekdays from 8 to 9 PM.">
+          <p>Everything in DropTrace, plus tools for the problems that aren't full outages.</p>
+          <ul>
+            <li>Packet loss and jitter tracking</li>
+            <li>Pattern Finder shows when problems cluster</li>
+            <li>Wi-Fi, route, cable and lag tests</li>
+            <li>Provider Claim Kit for credits and repairs</li>
+          </ul>
+          <a class="btn primary" href="https://apps.microsoft.com/detail/9PDG877VL6GP">Get it on Microsoft Store</a>
+        </article>
+
+        <article class="app">
+          <div class="app-top"><div><h3>HitchTrace</h3></div><span class="soon">Coming soon</span></div>
+          <p>For games that stutter even when your FPS looks fine. HitchTrace watches your PC while you play and points to the likely cause of each hitch, such as a background app, disk activity, a driver, or a Windows setting.</p>
+          <ul>
+            <li>Frame-time graph that catches every hitch</li>
+            <li>Shows what else was busy when it happened</li>
+            <li>Checks common PC settings that cause stutter</li>
+          </ul>
+          <a class="btn" href="https://ko-fi.com/flagpoleog">Follow on Ko-fi for updates</a>
+        </article>
+
+        <article class="app">
+          <div class="app-top"><div><h3>FolderTrace</h3></div><span class="soon">Coming soon</span></div>
+          <p>AppData fills up with leftovers from programs and games you uninstalled years ago, under names that make no sense. FolderTrace tells you which program each folder belongs to, so you can clear out the ones you don't need.</p>
+          <ul>
+            <li>Labels folders In use, Likely leftover, or Not sure</li>
+            <li>Shows the evidence behind every label</li>
+            <li>Tick the leftovers and delete them in one place</li>
+          </ul>
+          <a class="btn" href="https://ko-fi.com/flagpoleog">Follow on Ko-fi for updates</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="label">How they're built</p>
+      <h2>Three rules for every app</h2>
+      <div class="rules">
+        <div class="rule"><span class="n">01</span><h3>Native, not a web page in a window</h3><p>A lot of desktop apps today ship a whole browser inside them. These don't, so they open fast and leave your RAM for the things you're actually doing.</p></div>
+        <div class="rule"><span class="n">02</span><h3>Honest about what they know</h3><p>A likely cause is labeled as likely. The apps show you the evidence and don't claim more than it proves.</p></div>
+        <div class="rule"><span class="n">03</span><h3>Fair pricing</h3><p>The free versions stay free. Paid versions cost one flat price on the Microsoft Store, with no monthly fee.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="wrap support">
+      <div>
+        <p class="label">Support the work</p>
+        <h2>Made by one person between shifts</h2>
+        <p>If DropTrace helped you get your internet fixed, a coffee keeps the next app coming.</p>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="https://ko-fi.com/flagpoleog">Buy me a coffee on Ko-fi</a>
+        <a class="btn" href="https://github.com/FlagPoleOG/DropTrace">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Second Shift Software</span>
+    <span>Windows apps · Microsoft Store</span>
+  </div>
+</footer>
+</body>
+</html>
