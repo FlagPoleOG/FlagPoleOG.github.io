@@ -23,6 +23,9 @@ h1 { font:900 clamp(36px,6vw,56px)/1 "Archivo",Arial,sans-serif; font-stretch:70
 .form { background:#fff; border-radius:10px; overflow:hidden; border:1px solid var(--line); }
 .form iframe { display:block; width:100%; height:1100px; border:0; }
 .alt { color:var(--muted); font-size:15px; margin-top:18px; }
+.direct { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:0 0 24px; color:var(--muted); font-size:16px; }
+.direct a { text-decoration:none; }
+.direct a:hover { text-decoration:underline; }
 @media (max-width:480px) { .wrap { padding-inline:12px; } .form iframe { height:1250px; } }
 </style>
 <script data-goatcounter="https://flagpoleog.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
@@ -33,6 +36,7 @@ h1 { font:900 clamp(36px,6vw,56px)/1 "Archivo",Arial,sans-serif; font-stretch:70
   <p class="label">Feedback</p>
   <h1>Tell me what you think</h1>
   <p class="lede">Found a bug, have an idea, or something just doesn't make sense? I read every message. Leave your email if you want a reply.</p>
+  <p class="direct">Rather email? Send feedback straight to <a href="mailto:dev@secondshift.software">dev@secondshift.software</a>. If an app isn't working, <a href="mailto:support@secondshift.software">support@secondshift.software</a> is the fastest way to get help.</p>
   <div class="form">
     <iframe id="form" title="Second Shift Software feedback form" src="https://docs.google.com/forms/d/e/1FAIpQLSfCmPvHgiuEyqk4yoWYOCiPEt5gy99WyP46xc3Kww2oS5cqHA/viewform?embedded=true">Loading…</iframe>
   </div>

@@ -86,6 +86,9 @@ h2 { font: 800 clamp(30px, 4vw, 44px)/1.05 var(--display); font-stretch: 78%; te
 .support h2 { margin-bottom: 16px; }
 .support p { color: var(--muted); max-width: 36em; margin: 0; }
 .support .actions { justify-content: flex-end; }
+.support p.mail { margin-top: 18px; color: var(--text); font-size: 16px; }
+.support p.mail a { color: var(--amber); text-decoration: none; }
+.support p.mail a:hover { text-decoration: underline; }
 
 footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
@@ -235,6 +238,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p class="label">Support the work</p>
         <h2>Made by one person between shifts</h2>
         <p>If DropTrace helped you get your internet fixed, or FolderTrace cleared out a few gigs, a coffee keeps the next app coming.</p>
+        <p class="mail">Need help with an app? Email <a href="mailto:support@secondshift.software">support@secondshift.software</a>.<br>For anything else, reach me at <a href="mailto:contact@secondshift.software">contact@secondshift.software</a>.</p>
       </div>
       <div class="actions">
         <a class="btn primary" href="https://ko-fi.com/flagpoleog">Buy me a coffee on Ko-fi</a>
@@ -249,6 +253,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <span>© 2026 Second Shift Software</span>
     <span>Windows apps · Microsoft Store</span>
+    <span><a href="mailto:contact@secondshift.software">contact@secondshift.software</a></span>
     <span>This site counts visits with GoatCounter. No cookies, and nothing that identifies you.</span>
   </div>
 </footer>
