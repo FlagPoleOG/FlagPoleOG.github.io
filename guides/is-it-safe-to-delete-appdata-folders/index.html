@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What the AppData folders are, which ones are safe to clear, and how to tell whether a folder is a leftover from a program you removed.">
+<link rel="canonical" href="https://secondshift.software/guides/is-it-safe-to-delete-appdata-folders/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<title>Is it safe to delete AppData folders? · Second Shift Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#0d1117; --panel:#151b24; --line:#263041; --text:#e6e9ef; --muted:#8d97a8; --amber:#f2a93b; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--ink); color:var(--text); font:400 17px/1.6 "IBM Plex Sans","Segoe UI",system-ui,sans-serif; }
+a { color:var(--amber); }
+header { border-bottom:1px solid var(--line); }
+.wrap { max-width:760px; margin:0 auto; padding-inline:20px; }
+.bar { padding-block:18px; }
+.bar a { color:var(--text); text-decoration:none; font:800 14px/1 "Archivo",Arial,sans-serif; font-stretch:112%; letter-spacing:.12em; text-transform:uppercase; }
+main { padding-block:44px 64px; }
+.label { font:500 13px/1 "IBM Plex Mono",Consolas,monospace; color:var(--amber); letter-spacing:.08em; text-transform:uppercase; margin:0 0 16px; }
+h1 { font:900 clamp(36px,6vw,56px)/1 "Archivo",Arial,sans-serif; font-stretch:70%; text-transform:uppercase; margin:0 0 14px; }
+.lede { color:var(--muted); margin:0 0 28px; max-width:36em; }
+.form { background:#fff; border-radius:10px; overflow:hidden; border:1px solid var(--line); }
+.form iframe { display:block; width:100%; height:1100px; border:0; }
+.alt { color:var(--muted); font-size:15px; margin-top:18px; }
+.direct { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:0 0 24px; color:var(--muted); font-size:16px; }
+.direct a { text-decoration:none; }
+.direct a:hover { text-decoration:underline; }
+@media (max-width:480px) { .wrap { padding-inline:12px; } .form iframe { height:1250px; } }
+
+h2 { font:800 22px/1.2 "Archivo",Arial,sans-serif; font-stretch:90%; text-transform:uppercase; margin:36px 0 10px; }
+h1 { font-size:clamp(30px,5.5vw,48px); }
+p, li { max-width:40em; }
+li { margin-bottom:8px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin:28px 0; }
+.card p { margin:0 0 12px; } .card p:last-child { margin:0; }
+.btn { display:inline-block; background:var(--amber); color:#1a1205; font-weight:600; text-decoration:none; padding:10px 16px; border-radius:8px; }
+code { font:500 15px "IBM Plex Mono",Consolas,monospace; background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:1px 6px; }
+.list a { display:block; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:0 0 12px; text-decoration:none; color:var(--text); }
+.list a span { display:block; color:var(--muted); font-size:15px; margin-top:4px; }
+</style>
+<script data-goatcounter="https://flagpoleog.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<header><div class="wrap bar"><a href="/">Second Shift Software</a></div></header>
+<main class="wrap">
+  <p class="label">Guide</p>
+  <h1>Is it safe to delete AppData folders?</h1>
+
+  <p class="lede">Sometimes. AppData holds settings and data for the programs on your PC, and some of it is leftover from programs you removed. The trouble is telling which is which.</p>
+  <h2>What AppData is</h2>
+  <p>It is a hidden folder inside your user folder. It has three parts:</p>
+  <ul>
+    <li><strong>Local</strong> holds data for this PC, such as caches and temporary files.</li>
+    <li><strong>LocalLow</strong> holds data for programs that run with lower permissions, such as some browsers' sandboxed content and games.</li>
+    <li><strong>Roaming</strong> holds settings that can follow your account between PCs.</li>
+  </ul>
+  <h2>What is usually safe</h2>
+  <ul>
+    <li>The Windows Temp folder, once you close your programs. Skip files that say they are in use.</li>
+    <li>A folder named after a program you are sure you uninstalled and no longer want.</li>
+  </ul>
+  <h2>What to leave alone</h2>
+  <ul>
+    <li>Anything from Windows or a driver, such as Microsoft, NVIDIA or Intel folders.</li>
+    <li>Folders for programs you still use. Deleting them can reset your settings, saved games or logins.</li>
+    <li>A folder you cannot name. If you do not know it, do not delete it.</li>
+  </ul>
+  <h2>A safer way to clear one</h2>
+  <ol>
+    <li>Search the folder name online and check it against your installed apps in Settings.</li>
+    <li>Close the program if it is running.</li>
+    <li>Move the folder to your desktop instead of deleting it.</li>
+    <li>Use the PC for a few days. If nothing breaks, delete it then.</li>
+  </ol>
+  <p>Remember that a folder with a program's name does not always mean the program is gone. Some apps install under a different name than the one in your Start menu.</p>
+  <h2>Skip the guessing</h2>
+  <p>FolderTrace works this out for you. It labels each folder In use, Likely leftover or Not sure, and shows the evidence behind the label. A "likely leftover" is a judgment, not a promise, so you stay in charge of what gets deleted.</p>
+<div class="card"><p>FolderTrace lists the folders in AppData and Program Files, says which program each one belongs to, and shows the evidence behind every label. It is free on the Microsoft Store.</p><p><a class="btn" href="https://apps.microsoft.com/detail/9NG4J9PKM2WC">Get FolderTrace</a></p></div>
+</main>
+</body>
+</html>

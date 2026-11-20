@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="What to write down when your internet keeps dropping, so your provider takes the problem seriously and sends someone to fix it.">
+<link rel="canonical" href="https://secondshift.software/guides/log-internet-outages-for-your-provider/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<title>How to log internet outages for your provider · Second Shift Software</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#0d1117; --panel:#151b24; --line:#263041; --text:#e6e9ef; --muted:#8d97a8; --amber:#f2a93b; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--ink); color:var(--text); font:400 17px/1.6 "IBM Plex Sans","Segoe UI",system-ui,sans-serif; }
+a { color:var(--amber); }
+header { border-bottom:1px solid var(--line); }
+.wrap { max-width:760px; margin:0 auto; padding-inline:20px; }
+.bar { padding-block:18px; }
+.bar a { color:var(--text); text-decoration:none; font:800 14px/1 "Archivo",Arial,sans-serif; font-stretch:112%; letter-spacing:.12em; text-transform:uppercase; }
+main { padding-block:44px 64px; }
+.label { font:500 13px/1 "IBM Plex Mono",Consolas,monospace; color:var(--amber); letter-spacing:.08em; text-transform:uppercase; margin:0 0 16px; }
+h1 { font:900 clamp(36px,6vw,56px)/1 "Archivo",Arial,sans-serif; font-stretch:70%; text-transform:uppercase; margin:0 0 14px; }
+.lede { color:var(--muted); margin:0 0 28px; max-width:36em; }
+.form { background:#fff; border-radius:10px; overflow:hidden; border:1px solid var(--line); }
+.form iframe { display:block; width:100%; height:1100px; border:0; }
+.alt { color:var(--muted); font-size:15px; margin-top:18px; }
+.direct { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:0 0 24px; color:var(--muted); font-size:16px; }
+.direct a { text-decoration:none; }
+.direct a:hover { text-decoration:underline; }
+@media (max-width:480px) { .wrap { padding-inline:12px; } .form iframe { height:1250px; } }
+
+h2 { font:800 22px/1.2 "Archivo",Arial,sans-serif; font-stretch:90%; text-transform:uppercase; margin:36px 0 10px; }
+h1 { font-size:clamp(30px,5.5vw,48px); }
+p, li { max-width:40em; }
+li { margin-bottom:8px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin:28px 0; }
+.card p { margin:0 0 12px; } .card p:last-child { margin:0; }
+.btn { display:inline-block; background:var(--amber); color:#1a1205; font-weight:600; text-decoration:none; padding:10px 16px; border-radius:8px; }
+code { font:500 15px "IBM Plex Mono",Consolas,monospace; background:var(--panel); border:1px solid var(--line); border-radius:4px; padding:1px 6px; }
+.list a { display:block; background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:0 0 12px; text-decoration:none; color:var(--text); }
+.list a span { display:block; color:var(--muted); font-size:15px; margin-top:4px; }
+</style>
+<script data-goatcounter="https://flagpoleog.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+<header><div class="wrap bar"><a href="/">Second Shift Software</a></div></header>
+<main class="wrap">
+  <p class="label">Guide</p>
+  <h1>How to log outages for your provider</h1>
+
+  <p class="lede">Support teams hear "my internet keeps cutting out" all day. A short, dated log makes your case harder to brush off.</p>
+  <h2>What to record for each drop</h2>
+  <ul>
+    <li>The date and the time it started.</li>
+    <li>How long it lasted.</li>
+    <li>What stopped working: everything, one device, or only some websites.</li>
+    <li>Whether you were on Wi-Fi or a cable.</li>
+    <li>What the lights on your modem and router showed.</li>
+    <li>The results of the ping tests from <a href="/guides/internet-dropping-or-router-problem/">this guide</a>, if you had time to run them.</li>
+  </ul>
+  <h2>Rule out your own gear first</h2>
+  <p>Before you call, restart the modem and router once, try a different cable, and test with a wired connection if you can. Tell support you did this. It skips the first round of scripted advice.</p>
+  <h2>Keep it up for a week or two</h2>
+  <p>One bad evening is easy to dismiss. Ten drops across two weeks, with times and lengths, shows a pattern. Patterns are what get a technician visit or a line check.</p>
+  <h2>When you contact them</h2>
+  <ul>
+    <li>Give the number of drops, the date range and the typical length.</li>
+    <li>Say whether it happens at certain times of day.</li>
+    <li>Ask for a ticket number and for the line to be tested.</li>
+    <li>Ask whether they can see signal problems or errors on their side.</li>
+  </ul>
+  <h2>Let the PC keep the log</h2>
+  <p>Writing every drop by hand is tedious and you will miss the ones that happen while you are away. DropTrace records them automatically and can build a report with the times, lengths and likely cause that you can send to your provider.</p>
+<div class="card"><p>DropTrace runs these checks every few seconds in the background and logs each outage with its start time, length and likely cause. It is free on the Microsoft Store.</p><p><a class="btn" href="https://apps.microsoft.com/detail/9P0S0B1RCX70">Get DropTrace</a></p></div>
+</main>
+</body>
+</html>
